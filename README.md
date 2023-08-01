@@ -10,6 +10,7 @@
 - Typescript
 - Node.js
 - Vue.js
+- Tailwind CSS
 
 ### Backend
 
