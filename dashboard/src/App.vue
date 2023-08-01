@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import ModalFactory from './components/ModalFactory';
+import ModalFactory from './components/ModalFactory/ModalFactory.vue';
 
 export default {
   components: { ModalFactory },

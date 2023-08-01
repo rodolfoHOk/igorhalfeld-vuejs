@@ -1,7 +1,6 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div>
-    <h1>Feedbacks</h1>
+    <h1>Modal de criação de conta</h1>
   </div>
 </template>
 
