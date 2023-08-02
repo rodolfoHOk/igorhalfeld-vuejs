@@ -15,15 +15,18 @@
 
           <input
             type="email"
-            class="block w-full px-4 py-3 mt-1 text-lg bg-green-100 border-2 border-transparent rounded"
-            :class="{ 'border-brand-danger': !!state.email.errorMessage }"
+            class="block w-full px-4 py-3 mt-1 text-lg bg-gray-100 border-2 border-transparent rounded"
+            :class="{
+              'border-transparent': !state.email.errorMessage,
+              'border-brand-danger': !!state.email.errorMessage,
+            }"
             placeholder="jane.doe@email.com"
             v-model="state.email.value"
           />
 
           <span
             v-if="!!state.email.errorMessage"
-            class="block font-medium text-brand-danger"
+            class="block font-medium text-brand-danger mt-1"
           >
             {{ state.email.errorMessage }}
           </span>
@@ -34,15 +37,18 @@
 
           <input
             type="password"
-            class="block w-full px-4 py-3 mt-1 text-lg bg-green-100 border-2 border-transparent rounded"
-            :class="{ 'border-brand-danger': !!state.password.errorMessage }"
+            class="block w-full px-4 py-3 mt-1 text-lg bg-gray-100 border-2 rounded"
+            :class="{
+              'border-transparent': !state.password.errorMessage,
+              'border-brand-danger': !!state.password.errorMessage,
+            }"
             placeholder="******"
             v-model="state.password.value"
           />
 
           <span
             v-if="!!state.password.errorMessage"
-            class="block font-medium text-brand-danger"
+            class="block font-medium text-brand-danger mt-1"
           >
             {{ state.password.errorMessage }}
           </span>
@@ -63,22 +69,35 @@
 
 <script>
 import { reactive } from 'vue';
+import { useField } from 'vee-validate';
 import useModal from '@/hooks/useModal';
+import {
+  validateEmptyAndLength3,
+  validateEmptyAndEmail,
+} from '../../utils/validators';
 
 export default {
   setup() {
     const modal = useModal();
 
+    const { value: emailValue, errorMessage: emailErrorMessage } = useField(
+      'email',
+      validateEmptyAndEmail
+    );
+
+    const { value: passwordValue, errorMessage: passwordErrorMessage } =
+      useField('password', validateEmptyAndLength3);
+
     const state = reactive({
       hasError: false,
       isLoading: false,
       email: {
-        value: '',
-        errorMessage: '',
+        value: emailValue,
+        errorMessage: emailErrorMessage,
       },
       password: {
-        value: '',
-        errorMessage: '',
+        value: passwordValue,
+        errorMessage: passwordErrorMessage,
       },
     });
 
