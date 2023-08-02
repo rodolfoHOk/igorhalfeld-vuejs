@@ -60,7 +60,12 @@
           :class="{ 'opacity-50': state.isLoading }"
           :disabled="state.isLoading"
         >
-          Entrar
+          <icon
+            v-if="state.isLoading"
+            name="LoadingIcon"
+            class="animate-spin"
+          />
+          <span v-else>Entrar</span>
         </button>
       </form>
     </div>
@@ -73,6 +78,7 @@ import { useRouter } from 'vue-router';
 import { useField } from 'vee-validate';
 import { useToast } from 'vue-toastification';
 import useModal from '@/hooks/useModal';
+import Icon from '../Icon/IconFactory.vue';
 import {
   validateEmptyAndLength3,
   validateEmptyAndEmail,
@@ -80,6 +86,7 @@ import {
 import services from '../../services';
 
 export default {
+  components: { Icon },
   setup() {
     const router = useRouter();
     const toast = useToast();
