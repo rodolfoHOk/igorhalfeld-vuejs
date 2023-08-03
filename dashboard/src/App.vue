@@ -11,6 +11,7 @@ import { watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import ModalFactory from './components/ModalFactory/ModalFactory.vue';
 import services from './services';
+import { setCurrentUser } from './store/user';
 
 export default {
   components: { ModalFactory },
@@ -30,8 +31,7 @@ export default {
           }
 
           const loggedUser = await services.users.getMe();
-
-          console.log(loggedUser);
+          setCurrentUser(loggedUser);
         }
       }
     );
