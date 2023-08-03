@@ -6,8 +6,8 @@ module.exports = {
       email: 'igor@igor.me',
       password: '1234',
       apiKey: ['fcd5015c-10d3-4e9c-b395-ec7ed8850165'],
-      createdAt: new Date('2020-09-05').getTime()
-    }
+      createdAt: new Date('2020-09-05').getTime(),
+    },
   ],
   feedbacks: [
     {
@@ -18,7 +18,7 @@ module.exports = {
       type: 'OTHER',
       device: 'Chrome 85.0, macOS 10.14',
       page: 'https://feedbacker.com/pricing',
-      createdAt: new Date('2020-11-13').getTime()
+      createdAt: new Date('2020-11-13').getTime(),
     },
     {
       text: 'Muitos erros slkkkkkkk',
@@ -28,7 +28,7 @@ module.exports = {
       type: 'ISSUE',
       device: 'Chrome 85.0, macOS 10.14',
       page: 'https://feedbacker.com/pricing',
-      createdAt: new Date('2020-10-23').getTime()
+      createdAt: new Date('2020-10-23').getTime(),
     },
     {
       text: 'Podia ter um botão de solicitar demo',
@@ -38,7 +38,7 @@ module.exports = {
       type: 'IDEA',
       device: 'Chrome 85.0, macOS 10.14',
       page: 'https://feedbacker.com/pricing',
-      createdAt: new Date('2020-09-23').getTime()
+      createdAt: new Date('2020-09-23').getTime(),
     },
     {
       text: 'Podia ter um botão de solicitar demo 1',
@@ -48,7 +48,7 @@ module.exports = {
       type: 'IDEA',
       device: 'Chrome 85.0, macOS 10.14',
       page: 'https://feedbacker.com/pricing',
-      createdAt: new Date('2020-12-23').getTime()
+      createdAt: new Date('2020-12-23').getTime(),
     },
     {
       text: 'Podia ter um botão de solicitar demo 2',
@@ -58,7 +58,7 @@ module.exports = {
       type: 'IDEA',
       device: 'Chrome 85.0, macOS 10.14',
       page: 'https://feedbacker.com/pricing',
-      createdAt: new Date('2020-08-23').getTime()
+      createdAt: new Date('2020-08-23').getTime(),
     },
     {
       text: 'Muitos erros slkkkkkkk 2',
@@ -68,7 +68,7 @@ module.exports = {
       type: 'ISSUE',
       device: 'Chrome 85.0, macOS 10.14',
       page: 'https://feedbacker.com/pricing',
-      createdAt: new Date('2020-05-23').getTime()
+      createdAt: new Date('2020-05-23').getTime(),
     },
     {
       text: 'Tava bom, agora parece que piorou',
@@ -78,7 +78,7 @@ module.exports = {
       type: 'ISSUE',
       device: 'Chrome 85.0, macOS 10.14',
       page: 'https://feedbacker.com/pricing',
-      createdAt: new Date('2020-05-23').getTime()
-    }
-  ]
-}
+      createdAt: new Date('2020-05-23').getTime(),
+    },
+  ],
+};

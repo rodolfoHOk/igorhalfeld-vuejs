@@ -1,38 +1,40 @@
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
 
-function CreateAuthHandler (db) {
-  async function login (ctx) {
-    const { email, password } = ctx.request.body
-    const user = await db.readOneByEmail('users', email)
+const { JWT_SECRET } = process.env;
+
+function CreateAuthHandler(db) {
+  async function login(ctx) {
+    const { email, password } = ctx.request.body;
+    const user = await db.readOneByEmail('users', email);
 
     if (!user) {
-      ctx.status = 404
-      ctx.body = { error: 'Not found' }
-      return
+      ctx.status = 404;
+      ctx.body = { error: 'Not found' };
+      return;
     }
 
-    const canLogin = () => (
-      user.email === email &&
-      user.password === password
-    )
+    const canLogin = () => user.email === email && user.password === password;
 
     if (!canLogin()) {
-      ctx.status = 401
-      ctx.body = { error: 'Unauthorized' }
-      return
+      ctx.status = 401;
+      ctx.body = { error: 'Unauthorized' };
+      return;
     }
 
-    const token = jwt.sign({
-      id: user.id,
-      email: user.email,
-      name: user.name
-    }, process.env.JWT_SECRET)
+    const token = jwt.sign(
+      {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+      },
+      JWT_SECRET
+    );
 
-    ctx.status = 200
-    ctx.body = { token }
+    ctx.status = 200;
+    ctx.body = { token };
   }
 
-  return { login }
+  return { login };
 }
 
-module.exports = CreateAuthHandler
+module.exports = CreateAuthHandler;
