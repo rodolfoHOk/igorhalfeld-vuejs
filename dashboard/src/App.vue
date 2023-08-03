@@ -29,9 +29,9 @@ export default {
             return;
           }
 
-          const { data } = await services.users.getMe();
+          const loggedUser = await services.users.getMe();
 
-          console.log(data);
+          console.log(loggedUser);
         }
       }
     );
