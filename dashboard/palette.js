@@ -4,6 +4,7 @@ module.exports = {
     gray: '#F9F9F9',
     info: '#8296FB',
     graydark: '#C0BCB0',
+    darkgray: '#444444',
     warning: '#E4B52E',
     danger: '#F88676',
   },

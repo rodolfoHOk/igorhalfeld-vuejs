@@ -4,9 +4,10 @@
 
 <script>
 import LoadingIcon from './LoadingIcon.vue';
+import CopyIcon from './CopyIcon.vue';
 
 export default {
-  components: { LoadingIcon },
+  components: { LoadingIcon, CopyIcon },
   props: {
     name: { type: String, required: true },
   },

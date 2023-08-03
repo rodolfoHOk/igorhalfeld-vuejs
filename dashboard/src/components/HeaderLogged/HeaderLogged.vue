@@ -39,14 +39,12 @@
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 import useStore from '../../hooks/useStore';
-import { clearCurrentUser } from '../../store/user';
+import { clearCurrentUser } from '@/store/user';
 
 export default {
   setup() {
     const router = useRouter();
     const store = useStore('User');
-
-    console.log(store.currentUser.name);
 
     const logoutLabel = computed(() => {
       if (!store.currentUser.name) {
