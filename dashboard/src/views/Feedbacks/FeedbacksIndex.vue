@@ -19,10 +19,14 @@
 
           <suspense>
             <template #default>
-              <feedbacks-filters class="mt-8" />
+              <feedbacks-filters
+                class="mt-8 animate__animated animate__fadeIn animate__faster"
+              />
             </template>
 
-            <template #fallback> ...loading </template>
+            <template #fallback>
+              <filters-loading class="mt-7" />
+            </template>
           </suspense>
         </div>
         <div class="col-span-3 px-10 pt-20">lista</div>
@@ -34,8 +38,9 @@
 <script>
 import HeaderLogged from '../../components/HeaderLogged/HeaderLogged.vue';
 import FeedbacksFilters from './FeedbacksFilters.vue';
+import FiltersLoading from './FiltersLoading.vue';
 
 export default {
-  components: { HeaderLogged, FeedbacksFilters },
+  components: { HeaderLogged, FeedbacksFilters, FiltersLoading },
 };
 </script>
