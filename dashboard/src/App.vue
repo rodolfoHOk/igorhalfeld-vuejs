@@ -30,8 +30,12 @@ export default {
             return;
           }
 
-          const { data } = await services.users.getMe();
-          setCurrentUser(data);
+          try {
+            const { data } = await services.users.getMe();
+            setCurrentUser(data);
+          } catch (error) {
+            console.log('Erro ao tentar buscar os dados do usuário logado');
+          }
         }
       }
     );

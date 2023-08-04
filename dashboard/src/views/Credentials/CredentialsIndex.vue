@@ -33,10 +33,10 @@
           v-else
           class="flex py-3 px-5 mt-2 rounded items-center justify-between bg-brand-gray w-full lg:w-[630px] text-lg font-medium"
         >
-          <span v-if="hasError">Erro ao carregar a api key</span>
+          <span v-if="state.hasError">Erro ao carregar a api key</span>
           <span v-else>{{ store.User.currentUser.apiKey }}</span>
 
-          <div class="flex" v-if="!hasError">
+          <div class="flex" v-if="!state.hasError">
             <icon
               @click="handleCopy"
               name="copy"
@@ -70,7 +70,7 @@
           v-else
           class="py-3 px-5 mt-2 rounded bg-brand-gray w-full lg:w-[630px] text-lg font-medium overflow-x-scroll"
         >
-          <span v-if="hasError">Erro ao carregar o script</span>
+          <span v-if="state.hasError">Erro ao carregar o script</span>
 
           <pre v-else>
 &lt;script src="https://rodolfoHOk-feedbacker-widget.netlify.app?api_key={{
@@ -106,6 +106,11 @@ export default {
       hasError: false,
     });
 
+    function handleError(error) {
+      state.hasError = !!error;
+      state.isLoading = false;
+    }
+
     watch(
       () => store.User.currentUser,
       () => {
@@ -114,11 +119,6 @@ export default {
         }
       }
     );
-
-    function handleError(error) {
-      state.hasError = !!error;
-      state.isLoading = false;
-    }
 
     async function handleGenerateApiKey() {
       try {
@@ -147,6 +147,7 @@ export default {
       store,
       state,
       brandColors: palette.brand,
+      handleError,
       handleGenerateApiKey,
       handleCopy,
     };

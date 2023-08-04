@@ -20,6 +20,7 @@
           <suspense>
             <template #default>
               <feedbacks-filters
+                @select="changeFeedbacksType"
                 class="mt-8 animate__animated animate__fadeIn animate__faster"
               />
             </template>
@@ -39,13 +40,22 @@
           </p>
 
           <p
-            v-if="state.feedbacks.length === 0 && !state.isLoading"
+            v-if="
+              state.feedbacks.length === 0 &&
+              !state.isLoading &&
+              !state.isLoadingFeedbacks &&
+              !state.isLoadingMoreFeedbacks &&
+              !state.hasError
+            "
             class="text-lg text-center text-gray-800 font-regulars"
           >
             Ainda não há nenhum feedback recebido
           </p>
 
-          <div v-if="state.isLoading" class="flex flex-col gap-6">
+          <div
+            v-if="state.isLoading || state.isLoadingFeedbacks"
+            class="flex flex-col gap-6"
+          >
             <feedback-card-loading />
             <feedback-card-loading />
             <feedback-card-loading />
@@ -59,6 +69,8 @@
             :feedback="feedback"
             class="mb-8"
           />
+
+          <feedback-card-loading v-if="state.isLoadingMoreFeedbacks" />
         </div>
       </div>
     </div>
@@ -66,7 +78,7 @@
 </template>
 
 <script>
-import { onMounted, reactive } from 'vue';
+import { onErrorCaptured, onMounted, onUnmounted, reactive } from 'vue';
 import HeaderLogged from '@/components/HeaderLogged/HeaderLogged.vue';
 import FeedbacksFilters from './FeedbacksFilters.vue';
 import FiltersLoading from './FiltersLoading.vue';
@@ -88,15 +100,87 @@ export default {
       isLoading: false,
       hasError: false,
       feedbacks: [],
+      isLoadingFeedbacks: false,
+      isLoadingMoreFeedbacks: false,
       currentFeedbackType: '',
-      pagination: { limit: 5, offset: 0 },
+      pagination: { limit: 5, offset: 0, total: 0 },
     });
 
-    onMounted(() => fetchFeedbacks());
+    onMounted(() => {
+      fetchFeedbacks();
+      window.addEventListener('scroll', handleScroll, false);
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener('scroll', handleScroll, false);
+    });
+
+    onErrorCaptured(handleError);
 
     function handleError(error) {
       state.hasError = !!error;
       state.isLoading = false;
+      state.isLoadingFeedbacks = false;
+      state.isLoadingMoreFeedbacks = false;
+    }
+
+    async function handleScroll() {
+      const isBottomOfWindow =
+        Math.ceil(document.documentElement.scrollTop + window.innerHeight) >=
+        document.documentElement.scrollHeight;
+
+      if (state.isLoading || state.isLoadingMoreFeedbacks) {
+        return;
+      }
+
+      if (!isBottomOfWindow) {
+        return;
+      }
+
+      if (state.feedbacks.length >= state.pagination.total) {
+        return;
+      }
+
+      try {
+        state.isLoadingMoreFeedbacks = true;
+
+        const { data } = await services.feedbacks.getAll({
+          ...state.pagination,
+          type: state.currentFeedbackType,
+          offset: state.pagination.offset + 5,
+        });
+
+        if (data.results.length) {
+          state.feedbacks.push(...data.results);
+        }
+
+        state.pagination = data.pagination;
+        state.isLoadingMoreFeedbacks = false;
+      } catch (error) {
+        handleError(error);
+      }
+    }
+
+    async function changeFeedbacksType(type) {
+      try {
+        state.isLoadingFeedbacks = true;
+
+        state.pagination.limit = 5;
+        state.pagination.offset = 0;
+        state.currentFeedbackType = type;
+
+        const { data } = await services.feedbacks.getAll({
+          type,
+          ...state.pagination,
+        });
+
+        state.feedbacks = data.results;
+        state.pagination = data.pagination;
+
+        state.isLoadingFeedbacks = false;
+      } catch (error) {
+        handleError(error);
+      }
     }
 
     async function fetchFeedbacks() {
@@ -121,6 +205,7 @@ export default {
       state,
       handleError,
       fetchFeedbacks,
+      changeFeedbacksType,
     };
   },
 };
