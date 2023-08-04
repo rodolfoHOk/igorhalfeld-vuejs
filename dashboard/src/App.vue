@@ -30,8 +30,8 @@ export default {
             return;
           }
 
-          const loggedUser = await services.users.getMe();
-          setCurrentUser(loggedUser);
+          const { data } = await services.users.getMe();
+          setCurrentUser(data);
         }
       }
     );
