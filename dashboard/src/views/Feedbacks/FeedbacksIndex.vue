@@ -29,18 +29,95 @@
             </template>
           </suspense>
         </div>
-        <div class="col-span-3 px-10 pt-20">lista</div>
+
+        <div class="col-span-3 px-10 pt-20">
+          <p
+            v-if="state.hasError"
+            class="text-lg text-center text-gray-800 font-regulars"
+          >
+            Aconteceu um erro ao carregar os feedbacks 🥺
+          </p>
+
+          <p
+            v-if="state.feedbacks.length === 0 && !state.isLoading"
+            class="text-lg text-center text-gray-800 font-regulars"
+          >
+            Ainda não há nenhum feedback recebido
+          </p>
+
+          <feedback-card-loading v-if="state.isLoading" />
+
+          <feedback-card
+            v-else
+            v-for="(feedback, index) in state.feedbacks"
+            :key="feedback.id"
+            :is-opened="index === 0"
+            :feedback="feedback"
+            class="mb-8"
+          />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import HeaderLogged from '../../components/HeaderLogged/HeaderLogged.vue';
+import { onMounted, reactive } from 'vue';
+import HeaderLogged from '@/components/HeaderLogged/HeaderLogged.vue';
 import FeedbacksFilters from './FeedbacksFilters.vue';
 import FiltersLoading from './FiltersLoading.vue';
+import FeedbackCard from '@/components/FeedbackCard/FeedbackCard.vue';
+import FeedbackCardLoading from '@/components/FeedbackCard/FeedbackCardLoading.vue';
+import services from '@/services';
 
 export default {
-  components: { HeaderLogged, FeedbacksFilters, FiltersLoading },
+  components: {
+    HeaderLogged,
+    FeedbacksFilters,
+    FiltersLoading,
+    FeedbackCard,
+    FeedbackCardLoading,
+  },
+
+  setup() {
+    const state = reactive({
+      isLoading: false,
+      hasError: false,
+      feedbacks: [],
+      currentFeedbackType: '',
+      pagination: { limit: 5, offset: 0 },
+    });
+
+    onMounted(() => fetchFeedbacks());
+
+    function handleError(error) {
+      state.hasError = !!error;
+      state.isLoading = false;
+    }
+
+    async function fetchFeedbacks() {
+      try {
+        state.isLoading = true;
+
+        const { data } = await services.feedbacks.getAll({
+          ...state.pagination,
+          type: state.currentFeedbackType,
+        });
+
+        state.feedbacks = data.results;
+        state.pagination = data.pagination;
+
+        state.isLoading = false;
+      } catch (error) {
+        handleError(error);
+      }
+    }
+
+    return {
+      state,
+      handleError,
+      fetchFeedbacks,
+    };
+  },
 };
 </script>
