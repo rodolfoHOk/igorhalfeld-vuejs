@@ -39,7 +39,7 @@
           <div class="flex" v-if="!hasError">
             <icon
               @click="handleCopy"
-              name="CopyIcon"
+              name="copy"
               :color="brandColors.graydark"
               size="24"
               class="cursor-pointer"
@@ -47,7 +47,7 @@
 
             <icon
               @click="handleGenerateApiKey"
-              name="LoadingIcon"
+              name="loading"
               :color="brandColors.graydark"
               size="24"
               class="cursor-pointer ml-3"

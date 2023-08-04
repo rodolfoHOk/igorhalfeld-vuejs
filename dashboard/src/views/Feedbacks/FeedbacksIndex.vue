@@ -45,7 +45,11 @@
             Ainda não há nenhum feedback recebido
           </p>
 
-          <feedback-card-loading v-if="state.isLoading" />
+          <div v-if="state.isLoading" class="flex flex-col gap-6">
+            <feedback-card-loading />
+            <feedback-card-loading />
+            <feedback-card-loading />
+          </div>
 
           <feedback-card
             v-else

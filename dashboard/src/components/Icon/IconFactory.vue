@@ -3,11 +3,12 @@
 </template>
 
 <script>
-import LoadingIcon from './LoadingIcon.vue';
-import CopyIcon from './CopyIcon.vue';
+import Loading from './LoadingIcon.vue';
+import Copy from './CopyIcon.vue';
+import ChevronDown from './ChevronDownIcon.vue';
 
 export default {
-  components: { LoadingIcon, CopyIcon },
+  components: { Loading, Copy, ChevronDown },
   props: {
     name: { type: String, required: true },
   },

@@ -82,11 +82,7 @@
           :class="{ 'opacity-50': state.isLoading }"
           :disabled="state.isLoading"
         >
-          <icon
-            v-if="state.isLoading"
-            name="LoadingIcon"
-            class="animate-spin"
-          />
+          <icon v-if="state.isLoading" name="loading" class="animate-spin" />
           <span v-else>Criar conta</span>
         </button>
       </form>
