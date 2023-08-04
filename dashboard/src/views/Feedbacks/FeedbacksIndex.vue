@@ -12,14 +12,30 @@
       </p>
     </div>
 
-    <div>to do feedbacks list</div>
+    <div class="flex justify-center w-full pb=20">
+      <div class="w-4/5 max-w-6xl py-10 grid grid-cols-4 gap-2">
+        <div>
+          <h1 class="text-3xl font-black text-brand-darkgray">Listagem</h1>
+
+          <suspense>
+            <template #default>
+              <feedbacks-filters class="mt-8" />
+            </template>
+
+            <template #fallback> ...loading </template>
+          </suspense>
+        </div>
+        <div class="col-span-3 px-10 pt-20">lista</div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import HeaderLogged from '../../components/HeaderLogged/HeaderLogged.vue';
+import FeedbacksFilters from './FeedbacksFilters.vue';
 
 export default {
-  components: { HeaderLogged },
+  components: { HeaderLogged, FeedbacksFilters },
 };
 </script>
