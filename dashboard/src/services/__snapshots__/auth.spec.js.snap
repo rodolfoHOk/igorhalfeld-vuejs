@@ -9,15 +9,6 @@ Object {
 }
 `;
 
-exports[`Auth service should return a token when call user login 1`] = `
-Object {
-  "data": Object {
-    "token": "a1b.c2d.e3f",
-  },
-  "errors": null,
-}
-`;
-
 exports[`Auth service should return an user when call register 1`] = `
 Object {
   "data": Object {
