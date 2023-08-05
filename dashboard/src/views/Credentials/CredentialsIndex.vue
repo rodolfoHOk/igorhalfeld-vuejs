@@ -147,7 +147,6 @@ export default {
       store,
       state,
       brandColors: palette.brand,
-      handleError,
       handleGenerateApiKey,
       handleCopy,
     };
