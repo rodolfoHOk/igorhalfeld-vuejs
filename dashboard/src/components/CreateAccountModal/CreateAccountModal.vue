@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="modal-create-account">
     <div class="flex justify-between">
       <h1 class="text-4xl font-black text-gray-800">Crie uma conta</h1>
 
