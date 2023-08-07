@@ -34,6 +34,7 @@ describe('Home', () => {
     cy.get('#login-email-field').type('igor@igor.me');
     cy.get('#login-password-field').type('1234');
     cy.get('#login-submit-button').click();
+    cy.wait(4000);
 
     cy.url().should('include', '/feedbacks');
   });
@@ -60,6 +61,7 @@ describe('Home', () => {
     cy.get('#login-email-field').type('igor@igor.me');
     cy.get('#login-password-field').type('1234');
     cy.get('#login-submit-button').click();
+    cy.wait(4000);
     cy.url().should('include', '/feedbacks');
 
     cy.get('#logout-button').click();
