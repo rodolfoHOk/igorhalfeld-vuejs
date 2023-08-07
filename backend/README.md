@@ -1,8 +1,8 @@
-## Backend do curso treinamento de Vue.js 3
+# Backend do curso treinamento de Vue.js 3
 
 Backend pré-pronto do curso treinamento de Vue.js 3
 
-### Comandos
+## Comandos
 
 ```
 # Buildar o backend em um container do docker
@@ -16,3 +16,8 @@ npm run container
 
 _Este backend existe para auxiliar o curso de front-end com [Vue.js 3 do Vue.js Brasil](https://treinamento.vuejsbrasil.org/)_
 
+## Deploy Vercel
+
+- Install vercel cli: npm i -g vercel
+- Login vercel: vercel login
+- Deploy in project folder: vercel --prod

@@ -6,7 +6,7 @@ import router from '@/router';
 import { setGlobalLoading } from '@/store/global';
 
 const API_ENVS = {
-  production: 'https://backend-treinamento-vue3-rodolfohok.vercel.app/',
+  production: 'https://backend-treinamento-vue3-blue.vercel.app',
   development: '',
   local: 'http://localhost:3000',
 };
