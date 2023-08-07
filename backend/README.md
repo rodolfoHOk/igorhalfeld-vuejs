@@ -21,3 +21,6 @@ _Este backend existe para auxiliar o curso de front-end com [Vue.js 3 do Vue.js 
 - Install vercel cli: npm i -g vercel
 - Login vercel: vercel login
 - Deploy in project folder: vercel --prod
+- Vercel site: https://vercel.com/dashboard
+- Click in project: project-name/settings/environment-variables
+- Add environment variable: JWT_SECRET
