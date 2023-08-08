@@ -25,7 +25,10 @@
 ## Readme.md dos projetos
 
 [Backend](backend/README.md)
+
 [Dashboard](dashboard/README.md)
+
+[Widget](widget/README.md)
 
 ## Links
 
