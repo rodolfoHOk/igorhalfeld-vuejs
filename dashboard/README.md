@@ -1,14 +1,24 @@
 # Dashboard
 
+## Technologies
+
+- Javascript
+- Vue.js 3
+- Tailwind CSS
+- Jest
+- Cypress
+
 ## Run Cypress without GUI
 
 - terminal inside project folder: ./node_modules/cypress/bin/cypress run
 - this command generate videos in : tests/e2e/videos
 
-## Build Docker image
+## Run with Docker
 
-- docker build -t feedbacker-dashboard .
+- build image: docker build -t feedbacker-dashboard .
+- run container: docker run --name feeddash -p 80:80 feedbacker-dashboard
 
-## Run Docker container
+## Run with Node
 
-- docker run --name feeddash -p 80:80 feedbacker-dashboard
+- npm install
+- npm run serve

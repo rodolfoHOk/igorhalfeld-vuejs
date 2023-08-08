@@ -1,20 +1,24 @@
-# Backend do curso treinamento de Vue.js 3
+# Feedbacker Backend
 
-Backend pré-pronto do curso treinamento de Vue.js 3
+## Technologies
 
-## Comandos
+- Javascript
+- Node.js
+- Koa.js
+- JWT
+- Docker
+
+## Commands
 
 ```
-# Buildar o backend em um container do docker
+# Build backend in Docker image
 npm run build
 
-# Rodar o container que foi buildado
+# Run image in Docker container
 npm run container
 
-# O backend estará disponível na porta 3000
+# backend is running in port 3000
 ```
-
-_Este backend existe para auxiliar o curso de front-end com [Vue.js 3 do Vue.js Brasil](https://treinamento.vuejsbrasil.org/)_
 
 ## Deploy Vercel
 

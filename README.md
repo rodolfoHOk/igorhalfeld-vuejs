@@ -8,9 +8,11 @@
 
 - Javascript
 - Typescript
-- Node.js
 - Vue.js
 - Tailwind CSS
+- Jest
+- Cypress
+- Docker
 
 ### Backend
 
@@ -18,13 +20,16 @@
 - Node.js
 - Koa.js
 - JWT
+- Docker
 
-## Backend Readme.md
+## Readme.md dos projetos
 
-[Readme](backend/README.md)
+[Backend](backend/README.md)
+[Dashboard](dashboard/README.md)
 
 ## Links
 
+- [Treinamento Vue.js 3 do Vue.js Brasil](https://treinamento.vuejsbrasil.org/)
 - [Figma do Dashboard](https://www.figma.com/file/WhUZBnYnxgXVImQjh04Qon/Admin?node-id=0%3A1)
 - [Figma do Widget](https://www.figma.com/file/VYWmc92nrhSqrgUxf6QpFj/Widget?node-id=0%3A1)
 - [Plataforma de Referência](https://feedback.fish/)
