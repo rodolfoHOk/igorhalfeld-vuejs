@@ -1,4 +1,4 @@
-# Dashboard
+# Feedbacker Dashboard
 
 ## Technologies
 

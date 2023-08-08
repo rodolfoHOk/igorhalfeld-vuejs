@@ -1,34 +1,14 @@
-# widget
+# Feedbacker Widget
 
-## Project setup
-```
-npm install
-```
+## Technologies
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+- Typescript
+- Vue.js 3
+- Tailwind CSS
+- Jest
+- Cypress
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Run with Node
 
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Run your end-to-end tests
-```
-npm run test:e2e
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- npm install
+- npm run serve
