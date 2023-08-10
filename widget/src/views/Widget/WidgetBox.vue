@@ -13,7 +13,7 @@
     >
       <button
         v-if="canShowAdditionalControlAndInfo"
-        @click="() => {}"
+        @click="back"
         :disabled="canGoBack"
         :class="{ invisible: canGoBack }"
         class="text-xl text-gray-800 focus:outline-none"
@@ -37,7 +37,7 @@
       </button>
     </div>
 
-    <div class="flex">To do wizard</div>
+    <wizard />
 
     <div
       v-if="canShowAdditionalControlAndInfo"
@@ -58,7 +58,9 @@ import { DefaultColors } from 'tailwindcss/types/generated/colors.js';
 // @ts-ignore
 import { brand } from '../../../palette.js';
 import Icon from '@/components/Icon/IconFactory.vue';
+import Wizard from '@/components/Wizard/WizardIndex.vue';
 import { useStore } from '@/hooks/store';
+import { Navigation, useNavigation } from '@/hooks/navigation';
 
 interface SetupReturn {
   emit: SetupContext['emit'];
@@ -67,10 +69,11 @@ interface SetupReturn {
   label: ComputedRef<string>;
   canGoBack: ComputedRef<boolean>;
   canShowAdditionalControlAndInfo: ComputedRef<boolean>;
+  back: Navigation['back'];
 }
 
 export default defineComponent({
-  components: { Icon },
+  components: { Icon, Wizard },
 
   emits: ['close-box'],
 
@@ -78,6 +81,7 @@ export default defineComponent({
   // @ts-ignore
   setup(_, { emit }: SetupContext): SetupReturn {
     const store = useStore();
+    const { back } = useNavigation();
 
     const label = computed<string>(() => {
       if (store.feedbackType === 'ISSUE') {
@@ -113,6 +117,7 @@ export default defineComponent({
       label,
       canGoBack,
       canShowAdditionalControlAndInfo,
+      back,
     };
   },
 });
