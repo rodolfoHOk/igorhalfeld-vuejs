@@ -11,12 +11,12 @@ export function useNavigation(): Navigation {
 
   function next(): void {
     if (store.currentComponent === 'SelectFeedbackType') {
-      setCurrentComponent('WriteAFeedback');
+      setCurrentComponent('WriteFeedback');
     }
   }
 
   function back(): void {
-    if (store.currentComponent === 'WriteAFeedback') {
+    if (store.currentComponent === 'WriteFeedback') {
       setCurrentComponent('SelectFeedbackType');
       setFeedbackType('');
     }

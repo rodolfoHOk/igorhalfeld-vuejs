@@ -2,14 +2,17 @@
   <component
     :is="store.currentComponent"
     @select-feedback-type="handleSelectFeedbackType"
+    @next="next"
   />
 </template>
 
 <script lang="ts">
-import { Navigation, useNavigation } from '@/hooks/navigation';
+import { defineComponent } from 'vue';
 import { useStore } from '@/hooks/store';
 import { StoreState, setFeedbackType } from '@/store';
-import { defineComponent } from 'vue';
+import { Navigation, useNavigation } from '@/hooks/navigation';
+import SelectFeedbackType from './WizardSelectFeedbackType.vue';
+import WriteFeedback from './WizardWriteFeedback.vue';
 
 interface SetupReturn {
   store: StoreState;
@@ -18,6 +21,8 @@ interface SetupReturn {
 }
 
 export default defineComponent({
+  components: { SelectFeedbackType, WriteFeedback },
+
   setup(): SetupReturn {
     const store = useStore();
     const { next } = useNavigation();

@@ -1,7 +1,6 @@
 <template>
   <div
     id="widget-box"
-    @click="() => emit('close-box')"
     class="box animate__animated animate_fadeInUp animate__faster"
   >
     <div
