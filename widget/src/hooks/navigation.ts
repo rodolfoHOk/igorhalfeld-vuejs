@@ -4,6 +4,8 @@ import { setCurrentComponent, setFeedbackType } from '@/store';
 export interface Navigation {
   next: () => void;
   back: () => void;
+  setErrorState: () => void;
+  setSuccessState: () => void;
 }
 
 export function useNavigation(): Navigation {
@@ -22,8 +24,18 @@ export function useNavigation(): Navigation {
     }
   }
 
+  function setErrorState(): void {
+    setCurrentComponent('Error');
+  }
+
+  function setSuccessState(): void {
+    setCurrentComponent('Success');
+  }
+
   return {
     next,
     back,
+    setErrorState,
+    setSuccessState,
   };
 }
