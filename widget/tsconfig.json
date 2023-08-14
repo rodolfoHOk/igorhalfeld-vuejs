@@ -14,7 +14,7 @@
     "noImplicitAny": false,
     "sourceMap": true,
     "baseUrl": ".",
-    "types": ["webpack-env", "jest"],
+    "types": ["webpack-env", "jest", "cypress"],
     "paths": {
       "@/*": ["src/*"]
     },
@@ -25,7 +25,8 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "tests/**/*.tsx",
+    "src/views/Playground/PlaygroundIndex.spec.ts"
   ],
   "exclude": ["node_modules"]
 }
