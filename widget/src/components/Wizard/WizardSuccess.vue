@@ -26,7 +26,7 @@ import Icon from '@/components/Icon/IconFactory.vue';
 import palette from '../../../palette.js';
 
 interface SetupReturn {
-  palette: any;
+  palette: Record<string, string>;
   goBack: () => void;
 }
 

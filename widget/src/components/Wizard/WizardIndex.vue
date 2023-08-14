@@ -13,7 +13,7 @@ import { StoreState, setFeedbackType } from '@/store';
 import { Navigation, useNavigation } from '@/hooks/navigation';
 import SelectFeedbackType from './WizardSelectFeedbackType.vue';
 import WriteFeedback from './WizardWriteFeedback.vue';
-import Error from './WizardError.vue';
+import WizardError from './WizardError.vue';
 import Success from './WizardSuccess.vue';
 
 interface SetupReturn {
@@ -23,7 +23,12 @@ interface SetupReturn {
 }
 
 export default defineComponent({
-  components: { SelectFeedbackType, WriteFeedback, Error, Success },
+  components: {
+    SelectFeedbackType,
+    WriteFeedback,
+    Success,
+    Error: WizardError,
+  },
 
   setup(): SetupReturn {
     const store = useStore();
