@@ -10,8 +10,7 @@ export type StoreState = {
 };
 
 const initialState: StoreState = {
-  // currentComponent: 'SelectFeedbackType',
-  currentComponent: 'Error',
+  currentComponent: 'SelectFeedbackType',
   feedbackType: '',
   message: '',
   currentPage: '',
