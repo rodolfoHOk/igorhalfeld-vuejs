@@ -13,7 +13,7 @@
   </svg>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   props: {
     size: { type: [String, Number], default: 22 },

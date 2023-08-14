@@ -7,6 +7,7 @@ module.exports = {
     darkgray: '#444444',
     warning: '#E4B52E',
     danger: '#F88676',
+    success: '#63C3BE',
   },
   mediumslateblue: {
     50: '#f6f9fd',
