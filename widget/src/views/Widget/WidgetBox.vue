@@ -53,8 +53,6 @@
 import { computed, ComputedRef, defineComponent, SetupContext } from 'vue';
 import colors from 'tailwindcss/colors';
 import { DefaultColors } from 'tailwindcss/types/generated/colors.js';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { brand } from '../../../palette.js';
 import Icon from '@/components/Icon/IconFactory.vue';
 import Wizard from '@/components/Wizard/WizardIndex.vue';

@@ -85,7 +85,7 @@ export default defineComponent({
           fingerprint: store.fingerprint,
         });
 
-        if (!response.errors) {
+        if (!response.data) {
           setErrorState();
         } else {
           setSuccessState();

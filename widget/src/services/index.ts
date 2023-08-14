@@ -8,8 +8,6 @@ const API_ENVS = {
 };
 
 const httpClient = axios.create({
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   baseURL: API_ENVS[process.env.NODE_ENV] || API_ENVS.local,
 });
 

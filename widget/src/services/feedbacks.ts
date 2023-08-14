@@ -1,4 +1,6 @@
-import { Axios } from 'axios';
+import { AxiosInstance } from 'axios';
+import { RequestError } from '@/types/error';
+import { Feedback } from '@/types/feedback';
 
 type CreatePayload = {
   type: string;
@@ -9,21 +11,36 @@ type CreatePayload = {
   fingerprint: string;
 };
 
-type ResponsePayload = {
-  data: any;
-  errors: any;
+type CreateResponse = {
+  data: Feedback;
+  errors: RequestError | null;
 };
 
-export default (httpClient: Axios) => ({
-  create: async (feedback: CreatePayload): Promise<ResponsePayload> => {
-    const response = await httpClient.post('/feedbacks', feedback);
+export interface IFeedbacksService {
+  create: (payload: CreatePayload) => Promise<CreateResponse>;
+}
+
+function FeedbacksService(httpClient: AxiosInstance): IFeedbacksService {
+  async function create(payload: CreatePayload): Promise<CreateResponse> {
+    const response = await httpClient.post<Feedback>('/feedbacks', payload);
+
+    let errors: RequestError | null = null;
+    if (!response.data) {
+      errors = {
+        status: response.request.status,
+        statusText: response.request.statusText,
+      };
+    }
 
     return {
       data: response.data,
-      errors: {
-        status: response.request.status,
-        statusText: response.request.statusText,
-      },
+      errors,
     };
-  },
-});
+  }
+
+  return {
+    create,
+  };
+}
+
+export default FeedbacksService;

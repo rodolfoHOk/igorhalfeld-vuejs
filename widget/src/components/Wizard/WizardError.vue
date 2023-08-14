@@ -21,8 +21,6 @@
 import { defineComponent } from 'vue';
 import { resetStore } from '@/store';
 import Icon from '@/components/Icon/IconFactory.vue';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import palette from '../../../palette.js';
 
 interface SetupReturn {
