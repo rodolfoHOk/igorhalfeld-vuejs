@@ -4,7 +4,7 @@ function init(apiKey) {
     const fp = await window.FingerprintJs.load();
     const fingerprint = await fp.get();
 
-    const WIDGET_URL = `https://rodolfohok-feedbacker-widget.netlify.app?apiKey=${apiKey}&page=${page}&fingerprint=${fingerprint.visitorID}`;
+    const WIDGET_URL = `https://rodolfohok-feedbacker-widget.netlify.app?api_key=${apiKey}&page=${page}&fingerprint=${fingerprint.visitorID}`;
 
     const config = { method: 'HEAD' };
     const response = await fetch(
