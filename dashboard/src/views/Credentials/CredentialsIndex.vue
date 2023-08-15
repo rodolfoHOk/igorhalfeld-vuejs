@@ -77,7 +77,7 @@
 &lt;script
   defer
   async onload="init('{{ store.User.currentUser.apiKey }}')"
-  src="https://rodolfoHOk-feedbacker-widget.netlify.app/init.js"
+  src="https://rodolfohok-feedbacker-widget.netlify.app/init.js"
 &gt;&lt;/script&gt;
           </pre>
         </div>

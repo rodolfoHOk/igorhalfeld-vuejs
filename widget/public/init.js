@@ -43,8 +43,7 @@ function init(apiKey) {
   }
 
   const script = document.createElement('script');
-  script.src =
-    'https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js';
+  script.src = 'https://openfpcdn.io/fingerprintjs/v3/iife.min.js';
   script.async = 'async';
   script.addEventListener('load', handleLoadWidget);
 
