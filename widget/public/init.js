@@ -1,7 +1,7 @@
 function init(apiKey) {
   async function handleLoadWidget() {
     const page = `${window.location.origin}${window.location.pathname}`;
-    const fp = await window.FingerprintJs.load();
+    const fp = await window.FingerprintJS.load();
     const fingerprint = await fp.get();
 
     const WIDGET_URL = `https://rodolfohok-feedbacker-widget.netlify.app?api_key=${apiKey}&page=${page}&fingerprint=${fingerprint.visitorID}`;
@@ -24,7 +24,7 @@ function init(apiKey) {
 
       document.body.appendChild(iframe);
       window.addEventListener('message', (event) => {
-        if (!event.date.isWidget) {
+        if (!event.data.isWidget) {
           return;
         }
 
